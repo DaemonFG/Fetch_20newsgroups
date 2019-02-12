@@ -83,6 +83,27 @@ def naivebayes():
     print("预测文章类别：", y_predict)
     # 得出准确率
     print("预测准确率：", mlt.score(x_test, y_test))
+    
+    """
+    混淆矩阵：以二分类为例，在分类任务下，Predict Condition与True Condition之间存在四种不同组合，构成混淆矩阵
+                   _______________________预测结果_______________________
+             _____|__________正例____________|___________假例___________|
+            |正例 | 真正例TP(true positive)  | 伪反例FN(false negative) |
+    真实结果 ———————————————————————————————————————————————————————————
+            |假例 | 伪正例FP(fasle positive)|  真反例TN(true negative) |
+
+    精确率Precision：预测结果为正例的样本中真是为正例的比例
+                    真正例 / (真正例+伪正例)     查得准
+
+    召回率Recall：真实为正例的样本中预测结果为正例的比例
+                    真正例 / (真正例+伪反例)     查得全
+
+    F1-score，综合反映模型稳健性
+    F1 = 2TP / (2TP+FN+FP) = 2*Precision*Recall / (Precision+Recall)
+    """
+    from sklearn.metrics import classification_report
+    print("预测精确率和召回率：", classification_report(y_test, y_predict, target_names=news.target_names))
+
     return None
 
 
