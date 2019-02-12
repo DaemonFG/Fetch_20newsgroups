@@ -1,0 +1,2 @@
+# Fetch_20newsgroups
+利用sklearn自带的fetch_20newsgroups数据进行朴素贝叶斯分类实践
